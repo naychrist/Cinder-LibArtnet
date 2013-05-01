@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<block
+	name="LibArtnet"
+	id="net.renechristen.libartnet"
+	author="Rene Christen"
+	summary="Wraps LibArtnet lib for communicating via Art-net protocol."
+	license="LGPLv2.1"
+	git="https://github.com/naychrist/Cinder-LibArtnet.git"
+	version="1.1.2"
+	library="http://code.google.com/p/open-lighting"
+	>
+	
+	<!-- <preprocessorDefine>HAVE_CONFIG_H</preprocessorDefine> -->
+	<sourcePattern>src/*.cpp</sourcePattern>
+	<sourcePattern>lib/artnet/*.c</sourcePattern>
+	<headerPattern>src/*.h</headerPattern>
+	<headerPattern>lib/artnet/*.h</headerPattern>
+	<includePath system="true">lib</includePath>
+	<includePath system="true">lib/artnet</includePath>
+	
+</block>
+</cinder>
