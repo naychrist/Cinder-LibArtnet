@@ -11,7 +11,7 @@
 	library="http://code.google.com/p/open-lighting"
 	>
 	
-	<!-- <preprocessorDefine>HAVE_CONFIG_H</preprocessorDefine> -->
+	<preprocessorDefine>HAVE_CONFIG_H</preprocessorDefine>
 	<sourcePattern>src/*.cpp</sourcePattern>
 	<sourcePattern>lib/artnet/*.c</sourcePattern>
 	<headerPattern>src/*.h</headerPattern>

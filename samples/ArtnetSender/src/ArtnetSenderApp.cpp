@@ -1,4 +1,5 @@
 #include "cinder/app/AppBasic.h"
+#include "cinder/CinderMath.h"
 #include "CinderLibArtnet.h"
 
 using namespace ci;
@@ -26,7 +27,7 @@ void ArtnetSenderApp::update()
     //create some test data
     int length = 512;
     unsigned char data[length];
-    float val = (float)getMousePos().x/ getWindowWidth();
+    float val = math<float>::clamp( (float)getMousePos().x/ getWindowWidth() -1 );
     for (int i=0; i<length; i++) data[i] = val * 255;
     
     gl::clear( Color( val, val, val ) );
