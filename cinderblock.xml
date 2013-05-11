@@ -10,7 +10,8 @@
 	version="1.1.2"
 	library="http://code.google.com/p/open-lighting"
 	>
-	
+	<supports os="macosx" />
+	<supports os="ios" />
 	<preprocessorDefine>HAVE_CONFIG_H</preprocessorDefine>
 	<sourcePattern>src/*.cpp</sourcePattern>
 	<sourcePattern>lib/artnet/*.c</sourcePattern>
