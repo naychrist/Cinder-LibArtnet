@@ -130,9 +130,9 @@ void Node::send()
     for (int i=0; i<unis.size(); i++) {
         if (unis[i].updated) {
             if (!sendRaw) {
-                artnet_send_dmx(artnetNode, unis[i].port_id, unis[i].length, unis[i].data);  
+                artnet_send_dmx(artnetNode, unis[i].port_id, unis[i].length, unis[i].data);
             } else {
-                artnet_raw_send_dmx(artnetNode, unis[i].port_addr, unis[i].length, unis[i].data);   
+                artnet_raw_send_dmx(artnetNode, unis[i].port_addr, unis[i].length, unis[i].data);
             }
             unis[i].updated = false;
         }
@@ -144,6 +144,8 @@ void Node::close()
     // deallocate memory
     artnet_stop(artnetNode);
     artnet_destroy(artnetNode);
+    didSetup = false;
+    unis.clear();
 };
 
 int Node::artnetReceiver(artnet_node node, void *pp)
