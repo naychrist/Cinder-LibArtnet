@@ -4,7 +4,7 @@ namespace ciArtnet {
 
 Node::Node() : didSetup( false ) {}
 
-Node::~Node() { close(); }
+Node::~Node() {} //should call close manually, quits uncleanly if quitting with no connection
      
 void Node::setNumUniverses(int _num)
 {
