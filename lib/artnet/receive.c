@@ -53,7 +53,7 @@ int handle_poll(node n, artnet_packet p) {
       n->state.reply_addr.s_addr = n->state.bcast_addr.s_addr;
     }
 
-    // if we are told to send updates when artnet conditions change
+    // if we are told to send updates when node conditions change
     if (p->data.ap.ttm & TTM_BEHAVIOUR_MASK) {
       n->state.send_apr_on_change = TRUE;
     } else {
@@ -70,7 +70,7 @@ int handle_poll(node n, artnet_packet p) {
  * handle an art poll reply
  */
 void handle_reply(node n, artnet_packet p) {
-  // update the artnet list
+  // update the node list
   artnet_nl_update(&n->node_list, p);
 
   // run callback if defined
@@ -117,7 +117,7 @@ void handle_dmx(node n, artnet_packet p) {
        *  ------   #   empty   #            #             #
        *   ipB  \  #   ( 0 )   #    p.from  #   ! p.from  #
        * ##################################################
-       *           # new artnet  # continued  # start       #
+       *           # new node  # continued  # start       #
        *  empty    # first     #  trans-    #  merge      #
        *   (0)     #   packet  #   mission  #             #
        * ##################################################
@@ -701,7 +701,7 @@ int handle_firmware_reply(node n, artnet_packet p) {
 
   ent = find_entry_from_ip(&n->node_list, p->from);
 
-  // artnet doesn't exist in our list, or we're not doing a transfer to this artnet
+  // node doesn't exist in our list, or we're not doing a transfer to this node
   if (ent== NULL || ent->firmware.bytes_total == 0)
     return ARTNET_EOK;
 
@@ -828,7 +828,7 @@ int handle(node n, artnet_packet p) {
       break;
     default:
       n->state.report_code = ARTNET_RCPARSEFAIL;
-      printf("artnet but not yet implemented!, op was %hx\n", p->type);
+      printf("artnet but not yet implemented!, op was %x\n", (int) p->type);
   }
   return 0;
 }

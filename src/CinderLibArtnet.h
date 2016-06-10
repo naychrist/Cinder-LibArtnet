@@ -2,7 +2,9 @@
 
 #include "artnet.h"
 #include "packets.h"
-
+#include <vector>
+#include <string>
+#include "cinder/app/App.h"
 /*
  todo:
  - test receiving

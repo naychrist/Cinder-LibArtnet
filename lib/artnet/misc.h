@@ -29,7 +29,7 @@ void artnet_error(const char *fmt, ...);
 int32_t artnet_misc_nbytes_to_32(uint8_t bytes[4]);
 void artnet_misc_int_to_bytes(int data, uint8_t *bytes);
 
-// check if the artnet is null and return an error
+// check if the node is null and return an error
 #define check_nullnode(node) if (node == NULL) { \
   artnet_error("%s : argument 1 (artnet_node) was null" , __FUNCTION__ ); \
   return ARTNET_EARG; \
