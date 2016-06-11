@@ -25,14 +25,16 @@
 #include <sys/socket.h> // socket before net/if.h for mac
 #include <net/if.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 #else
 typedef int socklen_t;
 #include <winsock2.h>
 #include <Lm.h>
 #include <iphlpapi.h>
+typedef SSIZE_T ssize_t;
 #endif
 
-#include <unistd.h>
+
 
 #include "private.h"
 
@@ -141,7 +143,7 @@ static int get_ifaces(iface_t **if_head) {
        pAdapter && pAdapter < pAdapterInfo + ulOutBufLen;
        pAdapter = pAdapter->Next) {
 
-    if(pAdapter->Type != MIB_IF_TYPE_ETHERNET)
+    if(pAdapter->Type != MIB_IF_TYPE_ETHERNET && pAdapter->Type != IF_TYPE_IEEE80211)
       continue;
 
     for (ipAddress = &pAdapter->IpAddressList; ipAddress;
@@ -384,6 +386,7 @@ static int get_ifaces(iface_t **if_head) {
     }
   }
   free(buf);
+  close(sd);
   return ARTNET_EOK;
 
 e_free_list:
@@ -663,7 +666,7 @@ int artnet_net_send(node n, artnet_packet p) {
 
 
 /*
-int artnet_net_reprogram(artnet n) {
+int artnet_net_reprogram(node n) {
   iface_t *ift_head, *ift;
   int i;
 
@@ -717,7 +720,8 @@ int artnet_net_inet_aton(const char *ip_address, struct in_addr *address) {
   if (!inet_aton(ip_address, address)) {
 #else
   in_addr_t *addr = (in_addr_t*) address;
-  if ((*addr = inet_addr(ip_address)) == INADDR_NONE) {
+  if ((*addr = inet_addr(ip_address)) == INADDR_NONE &&
+      strcmp(ip_address, "255.255.255.255")) {
 #endif
     artnet_error("IP conversion from %s failed", ip_address);
     return ARTNET_EARG;

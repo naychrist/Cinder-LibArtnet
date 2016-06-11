@@ -120,11 +120,11 @@ typedef enum {
 
 
 /*
- * Enum describing the type of artnet
+ * Enum describing the type of node
  */
 typedef enum {
   ARTNET_SRV,      /**< An ArtNet server (transmitts DMX data) */
-  ARTNET_NODE,    /**< An ArtNet artnet   (dmx reciever) */
+  ARTNET_NODE,    /**< An ArtNet node   (dmx reciever) */
   ARTNET_MSRV,    /**< A Media Server */
   ARTNET_ROUTE,    /**< No Effect currently */
   ARTNET_BACKUP,    /**< No Effect currently */
@@ -141,7 +141,7 @@ typedef enum {
 typedef enum {
   ARTNET_TTM_DEFAULT = 0xFF,  /**< default, ArtPollReplies are broadcast, and nodes won't send a ArtPollReply when conditions change */
   ARTNET_TTM_PRIVATE = 0xFE,  /**< ArtPollReplies aren't broadcast */
-  ARTNET_TTM_AUTO = 0xFD    /**< ArtPollReplies are send when artnet conditions chang */
+  ARTNET_TTM_AUTO = 0xFD    /**< ArtPollReplies are send when node conditions chang */
 } artnet_ttm_value_t;
 
 /**
@@ -166,7 +166,7 @@ typedef enum {
 
 
 /*
- * Describes a remote ArtNet artnet that has been discovered
+ * Describes a remote ArtNet node that has been discovered
  */
 typedef struct artnet_node_entry_s {
   uint8_t ip[ARTNET_IP_SIZE];  /**< The IP address, Network byte ordered*/
@@ -176,9 +176,9 @@ typedef struct artnet_node_entry_s {
   uint8_t ubea;          /**< The UBEA version */
   uint8_t status;
   uint8_t etsaman[ARTNET_ESTA_SIZE];        /**< The ESTA Manufacturer code */
-  uint8_t shortname[ARTNET_SHORT_NAME_LENGTH];  /**< The short artnet name */
-  uint8_t longname[ARTNET_LONG_NAME_LENGTH];  /**< The long artnet name */
-  uint8_t nodereport[ARTNET_REPORT_LENGTH];  /**< The artnet report */
+  uint8_t shortname[ARTNET_SHORT_NAME_LENGTH];  /**< The short node name */
+  uint8_t longname[ARTNET_LONG_NAME_LENGTH];  /**< The long node name */
+  uint8_t nodereport[ARTNET_REPORT_LENGTH];  /**< The node report */
   int16_t numbports;        /**< The number of ports */
   uint8_t porttypes[ARTNET_MAX_PORTS];    /**< The type of ports */
   uint8_t goodinput[ARTNET_MAX_PORTS];
@@ -189,7 +189,7 @@ typedef struct artnet_node_entry_s {
   uint8_t swmacro;
   uint8_t swremote;
   uint8_t style;
-  uint8_t mac[ARTNET_MAC_SIZE];        /**< The MAC address of the artnet */
+  uint8_t mac[ARTNET_MAC_SIZE];        /**< The MAC address of the node */
 } artnet_node_entry_t;
 
 /** A pointer to an artnet_node_entry_t */
@@ -204,13 +204,13 @@ typedef struct {
 } artnet_node_config_t;
 
 
-/** The local ArtNet artnet */
+/** The local ArtNet node */
 typedef void *artnet_node;
 
 /** A list of remote ArtNet nodes */
 typedef void *artnet_node_list;
 
-// artnet control functions
+// node control functions
 EXTERN artnet_node artnet_new(const char *ip, int verbose);
 EXTERN int artnet_setoem(artnet_node vn, uint8_t hi, uint8_t lo);
 EXTERN int artnet_setesta(artnet_node vn, char hi, char lo);
@@ -325,7 +325,7 @@ EXTERN int artnet_get_universe_addr(artnet_node n,
                                     int id,
                                     artnet_port_dir_t dir);
 
-//artnet list functions
+//node list functions
 EXTERN artnet_node_list artnet_get_nl(artnet_node n);
 EXTERN artnet_node_entry artnet_nl_first(artnet_node_list nl);
 EXTERN artnet_node_entry artnet_nl_next(artnet_node_list nl);

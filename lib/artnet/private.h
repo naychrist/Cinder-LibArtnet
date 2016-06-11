@@ -139,7 +139,7 @@ extern uint16_t HIGH_BYTE;
 // ArtPollReply
 //-----------------------------------------------------------------------------
 
-// the artnet report codes
+// the node report codes
 typedef enum {
   ARTNET_RCDEBUG,
   ARTNET_RCPOWEROK,
@@ -159,7 +159,7 @@ typedef enum {
   ARTNET_RCUSERFAIL
 } artnet_node_report_code;
 
-// these define the types of artnet that can exist
+// these define the types of node that can exist
 // note it's different from artnet_node_type
 typedef enum {
   STNODE = 0x00,
@@ -228,7 +228,7 @@ typedef struct {
 } firmware_callback_t;
 
 /*
- * called when a artnet is remote programmed
+ * called when a node is remote programmed
  */
 typedef struct {
   int (*fh)(artnet_node n, void *d);
@@ -236,7 +236,7 @@ typedef struct {
 } program_callback_t;
 
 /*
- * called when a artnet receives rdm data
+ * called when a node receives rdm data
  */
 typedef struct {
   int (*fh)(artnet_node n, int address, uint8_t *rdm, int length, void *d);
@@ -285,7 +285,7 @@ typedef struct {
   uint8_t net_ctl;      // if the port address is under network control
   uint8_t status;        // status of the port
   uint8_t enabled;      // true if the port has had it's address set, this is internal only,
-                // it's not used by the ArtNet protocol, otherwise the artnet keeps
+                // it's not used by the ArtNet protocol, otherwise the node keeps
                 // picking up packets for the 0x00 port
   tod_t tod;
 } g_port_t;
@@ -325,7 +325,7 @@ typedef struct {
   g_port_t port;
   int  length;        // the length of the data THAT HAS CHANGED since the last dmx packet
   uint8_t enabled;    // true if the port has had it's address set, this is internal only,
-                      // it's not used by the ArtNet protocol, otherwise the artnet keeps
+                      // it's not used by the ArtNet protocol, otherwise the node keeps
                       // picking up packets for the 0x00 port
   uint8_t  data[ARTNET_DMX_LENGTH]; // output data
   merge_t merge_mode; // for merging
@@ -354,7 +354,7 @@ typedef struct {
  * Here be the structures
  */
 
-/* firstly we have the potential to do a firmware transfer to any artnet,
+/* firstly we have the potential to do a firmware transfer to any node,
  * this struct keeps the information such as how much data has been transfered
  * and the address of the peer. It's also used for receiving firmware
  */
@@ -371,20 +371,20 @@ typedef struct {
 } firmware_transfer_t;
 
 /*
- * The artnet entry in the LL. It contains the public entry, as well as some stuff
+ * The node entry in the LL. It contains the public entry, as well as some stuff
  * we don't want public like firmware
  */
 typedef struct node_entry_private_s {
   artnet_node_entry_t pub;
   struct node_entry_private_s *next;
   firmware_transfer_t firmware;
-  SI ip;  // don't rely on the ip address that the artnet
+  SI ip;  // don't rely on the ip address that the node
           // sends, they could be faking it. This is the ip that
           // the pollreply was sent from
 } node_entry_private_t;
 
 /**
- * The artnet list stores a pointer to the first, last and current
+ * The node list stores a pointer to the first, last and current
  * entries.
  */
 typedef struct {
@@ -395,11 +395,11 @@ typedef struct {
 } node_list_t;
 
 
-// End artnet list structures
+// End node list structures
 //-----------------------------------------------------------------------------
 
 
-// the status of the artnet
+// the status of the node
 typedef enum {
   ARTNET_OFF,
   ARTNET_STANDBY,
@@ -407,7 +407,7 @@ typedef enum {
 } node_status_t;
 
 
-// struct to hold the state of the artnet
+// struct to hold the state of the node
 typedef struct {
   artnet_node_type node_type;
   node_status_t mode;
@@ -440,7 +440,7 @@ typedef struct {
 
 
 /**
- * The main artnet structure
+ * The main node structure
  */
 typedef struct artnet_node_s{
   int sd;                  // the two sockets
@@ -452,7 +452,7 @@ typedef struct artnet_node_s{
     output_port_t out[ARTNET_MAX_PORTS]; // output ports
   } ports;
   artnet_reply_t ar_temp;       // buffered artpoll reply packet
-  node_list_t node_list;        // artnet list
+  node_list_t node_list;        // node list
   firmware_transfer_t firmware; // firmware details
   node_peering_t peering;       // peer if we've joined a group
 } artnet_node_t;

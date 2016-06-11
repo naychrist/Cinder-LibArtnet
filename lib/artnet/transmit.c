@@ -61,9 +61,9 @@ int artnet_tx_poll(node n, const char *ip, artnet_ttm_value_t ttm) {
 
 /*
  * Send an ArtPollReply
- * @param n the artnet
+ * @param n the node
  * @param response true if this reply is in response to a network packet
- *            false if this reply is due to the artnet changing it's conditions
+ *            false if this reply is due to the node changing it's conditions
  */
 int artnet_tx_poll_reply(node n, int response) {
   artnet_packet_t reply;
@@ -87,7 +87,7 @@ int artnet_tx_poll_reply(node n, int response) {
 
   snprintf((char *) &reply.data.ar.nodereport,
            sizeof(reply.data.ar.nodereport),
-           "%04hx [%04i] libartnet",
+           "%04x [%04i] libartnet",
            n->state.report_code,
            n->state.ar_count);
 
@@ -352,7 +352,7 @@ int artnet_tx_firmware_packet(node n, firmware_transfer_t *firm) {
 }
 
 
-// this is called when the artnet's state changes to rebuild the
+// this is called when the node's state changes to rebuild the
 // artpollreply packet
 int artnet_tx_build_art_poll_reply(node n) {
   int i;
