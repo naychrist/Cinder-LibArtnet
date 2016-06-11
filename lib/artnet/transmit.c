@@ -18,6 +18,11 @@
  * Copyright (C) 2004-2005 Simon Newton
  */
 
+#ifdef WIN32
+#if (_MSC_VER <= 1800)
+#define snprintf _snprintf
+#endif
+#endif
 #include "private.h"
 
 /*

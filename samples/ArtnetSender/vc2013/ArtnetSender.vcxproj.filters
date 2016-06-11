@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{952adcbe-e885-4780-829a-408520cb555b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-LibArtnet">
+      <UniqueIdentifier>{dd58eb5a-9a31-4e27-95bd-68fc0cf6a24a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-LibArtnet\src">
+      <UniqueIdentifier>{fbf2a461-1de3-42ed-a765-435d059af1e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-LibArtnet\lib">
+      <UniqueIdentifier>{983510a4-dba7-4525-99c4-19c38d12bbd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-LibArtnet\lib\artnet">
+      <UniqueIdentifier>{8026f3ec-e7ec-4989-888c-e66d945825f9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\ArtnetSenderApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ArtnetSenderApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\src\CinderLibArtnet.cpp">
+      <Filter>Blocks\Cinder-LibArtnet\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\artnet.c">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\misc.c">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\network.c">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\receive.c">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\tod.c">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\transmit.c">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\CinderLibArtnet.h">
+      <Filter>Blocks\Cinder-LibArtnet\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lib\artnet\artnet.h">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lib\artnet\common.h">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lib\artnet\misc.h">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lib\artnet\packets.h">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lib\artnet\private.h">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\lib\artnet\tod.h">
+      <Filter>Blocks\Cinder-LibArtnet\lib\artnet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

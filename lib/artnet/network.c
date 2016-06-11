@@ -18,7 +18,6 @@
  * Copyright (C) 2004-2007 Simon Newton
  *
  */
-
 #include <errno.h>
 
 #ifndef WIN32
@@ -27,11 +26,16 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #else
+#if (_MSC_VER <= 1800)
+#define snprintf _snprintf
+#endif
 typedef int socklen_t;
 #include <winsock2.h>
 #include <Lm.h>
 #include <iphlpapi.h>
 typedef SSIZE_T ssize_t;
+#include <stdio.h>
+
 #endif
 
 
