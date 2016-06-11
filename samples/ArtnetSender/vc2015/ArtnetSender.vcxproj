@@ -22,6 +22,7 @@
     <ProjectGuid>{09501B54-9C24-4034-A857-2D85A4DA6562}</ProjectGuid>
     <RootNamespace>ArtnetSender</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -191,12 +192,27 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup>
-    <ClCompile Include="..\..\..\lib\artnet\artnet.c" />
-    <ClCompile Include="..\..\..\lib\artnet\misc.c" />
-    <ClCompile Include="..\..\..\lib\artnet\network.c" />
-    <ClCompile Include="..\..\..\lib\artnet\receive.c" />
+    <ClCompile Include="..\..\..\lib\artnet\artnet.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\misc.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\network.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\artnet\receive.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
     <ClCompile Include="..\..\..\lib\artnet\tod.c" />
-    <ClCompile Include="..\..\..\lib\artnet\transmit.c" />
+    <ClCompile Include="..\..\..\lib\artnet\transmit.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+    </ClCompile>
     <ClCompile Include="..\..\..\src\CinderLibArtnet.cpp" />
     <ClCompile Include="..\src\ArtnetSenderApp.cpp" />
   </ItemGroup>

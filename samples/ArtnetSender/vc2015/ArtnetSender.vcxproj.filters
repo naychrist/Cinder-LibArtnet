@@ -16,16 +16,16 @@
     <Filter Include="blocks">
       <UniqueIdentifier>{d4c7b404-4291-4302-92a0-9df867a4910b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="blocks\CInder-LibArtnet">
+    <Filter Include="blocks\Cinder-LibArtnet">
       <UniqueIdentifier>{18141aca-97a5-4aab-928b-273bb1e78a16}</UniqueIdentifier>
     </Filter>
-    <Filter Include="blocks\CInder-LibArtnet\lib">
+    <Filter Include="blocks\Cinder-LibArtnet\lib">
       <UniqueIdentifier>{b344a811-3623-4b93-89fd-251c821f018b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="blocks\CInder-LibArtnet\lib\artnet">
+    <Filter Include="blocks\Cinder-LibArtnet\lib\artnet">
       <UniqueIdentifier>{25e55fd6-69b0-40ec-9de2-72e8dbed814b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="blocks\CInder-LibArtnet\src">
+    <Filter Include="blocks\Cinder-LibArtnet\src">
       <UniqueIdentifier>{15d2eb95-0dee-45e2-9d5c-18bed365b1ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -40,25 +40,25 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClCompile Include="..\..\..\lib\artnet\artnet.c">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\artnet\misc.c">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\artnet\network.c">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\artnet\receive.c">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\artnet\tod.c">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\artnet\transmit.c">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\CinderLibArtnet.cpp">
-      <Filter>blocks\CInder-LibArtnet\src</Filter>
+      <Filter>blocks\Cinder-LibArtnet\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,28 +66,28 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\artnet.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\common.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\config.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\misc.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\packets.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\private.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\lib\artnet\tod.h">
-      <Filter>blocks\CInder-LibArtnet\lib\artnet</Filter>
+      <Filter>blocks\Cinder-LibArtnet\lib\artnet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\CinderLibArtnet.h">
-      <Filter>blocks\CInder-LibArtnet\src</Filter>
+      <Filter>blocks\Cinder-LibArtnet\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
