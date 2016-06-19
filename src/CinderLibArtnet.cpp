@@ -1,4 +1,5 @@
 #include "CinderLibArtnet.h"
+#include "cinder/Log.h"
 
 namespace ciArtnet {
 
@@ -10,7 +11,7 @@ void Node::setNumUniverses(int _num)
 {
     
     if (unis.size()) {
-        std::cout<<"Error: Must call addUniverses() only once and before setup()."<<std::endl;
+		CI_LOG_E("Error: Must call addUniverses() only once and before setup().");
         return;
     }
     
@@ -27,12 +28,12 @@ void Node::setUniverseAtIndex(int _index, int _universe)
             unis[_index].port_addr = _universe;
         }
         else {
-            std::cout<< "Error: No universe at that index." <<std::endl;
+			CI_LOG_E("No universe at that index.");
             return;
         }
     }
     else {
-        std::cout<< "Error: Must change universe numbers before setup()." <<std::endl;
+		CI_LOG_E("Must change universe numbers before setup().");
         return;
     }
 
@@ -48,7 +49,7 @@ bool Node::setup(std::string _ip_addr, bool _sendRaw, uint8_t _subnet_addr)
     //@todo: allow for multiple nodes then artnet_join(artnetNode1, artnetNodeN)
     
     if (!artnetNode) {
-        printf("Error: %s\n", artnet_strerror());
+		CI_LOG_E(""<<artnet_strerror());
         return false;
     }
     
@@ -61,7 +62,7 @@ bool Node::setup(std::string _ip_addr, bool _sendRaw, uint8_t _subnet_addr)
     
     if (!unis.size()) {
         setNumUniverses(1);
-        std::cout<<"Creating single universe with address 1 and ID 0."<<std::endl;
+		CI_LOG_I("Creating single universe with address 1 and ID 0.");
     }
     
     for (int i=0; i<unis.size(); i++) {
@@ -77,7 +78,7 @@ bool Node::setup(std::string _ip_addr, bool _sendRaw, uint8_t _subnet_addr)
     artnet_set_handler(artnetNode, ARTNET_RECV_HANDLER, artnetReceiverWrapper, this); 
     
     if (artnet_start(artnetNode) != 0) {
-        printf("Error: %s\n", artnet_strerror());
+		CI_LOG_E(""<< artnet_strerror());
         return false;
     }
 
@@ -88,6 +89,8 @@ bool Node::setup(std::string _ip_addr, bool _sendRaw, uint8_t _subnet_addr)
 
 void Node::updateData(unsigned char * _data, int _length)
 {
+	if (!didSetup) return;
+
     unis[0].data = _data;
     unis[0].length = _length;
     unis[0].updated = true;
@@ -95,6 +98,8 @@ void Node::updateData(unsigned char * _data, int _length)
 
 void Node::updateDataByIndex(int _index, unsigned char * _data, int _length)
 {
+	if (!didSetup) return;
+
     if (_index < unis.size()) {
         unis[_index].data = _data;
         unis[_index].length = _length;
@@ -104,6 +109,7 @@ void Node::updateDataByIndex(int _index, unsigned char * _data, int _length)
 
 void Node::updateDataByUniverse(int _universe, unsigned char * _data, int _length)
 {
+	if (!didSetup) return;
 
     for (int i=0; i<unis.size(); i++) {
         if (unis[i].port_addr == _universe) {
@@ -122,7 +128,7 @@ int Node::getNumUniverses()
 
 void Node::send()
 {
-    
+	if (!didSetup) return;
     //artnet_send_poll(artnetNode, NULL, ARTNET_TTM_DEFAULT);//to test receiving...
     //printf("arnet_get_sd() => %i\n", artnet_get_sd(artnetNode));
     //printf("artnet_read() => %i\n", artnet_read(artnetNode, 1));//works but slows down thread
@@ -150,11 +156,11 @@ void Node::close()
 
 int Node::artnetReceiver(artnet_node node, void *pp)
 {
-    printf("Receiving Art-Net data!");
+	CI_LOG_I("Receiving Art-Net data!");
     artnet_packet pack = (artnet_packet) pp;
-    printf("Received packet sequence %d\n", pack->data.admx.sequence);
-    printf("Received packet type %d\n", pack->type);
-    printf("Received packet data %s\n", pack->data.admx.data);
+	CI_LOG_I("Received packet sequence " << pack->data.admx.sequence);
+	CI_LOG_I("Received packet type " << pack->type);
+	CI_LOG_I("Received packet data " << pack->data.admx.data);
     return 0;
 };
 
